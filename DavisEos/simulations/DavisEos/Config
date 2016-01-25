@@ -1,0 +1,56 @@
+# Coniguration file for LaserSlab simulation
+REQUIRES Driver
+REQUIRES physics/Hydro
+
+USESETUPVARS ThreeT
+
+IF ThreeT
+   #REQUESTS physics/Diffuse/DiffuseMain/Unsplit
+
+   REQUESTS physics/sourceTerms/Heatexchange/HeatexchangeMain/Spitzer
+   REQUESTS physics/materialProperties/Conductivity/ConductivityMain/SpitzerHighZ
+ENDIF
+
+# This simulation requires specifying the species via the setup
+# line. You must include the species setup variable:
+#
+# species=cham,targ
+#
+# An example of a setup line for this simulation is:
+#
+# ./setup -auto LaserSlab -2d +hdf5typeio \
+#         -nxb=16 -nyb=16 +mtmmmt +laser species=cham,targ
+# 
+# flmake setup DavisEos -auto -1d +cartesian +pm4dev -nxb=16 +hdf5typeio species=cham +mtmmmt +uhd3t
+# flmake setup DavisEos -auto -1d +cartesian +pm4dev -nxb=16 +hdf5typeio species=cham +uhd3t -parfile=flash.par -unit=physics/Eos/EosMain/multiTemp/Eospac -unit=physics/Eos/EosMain/Tabulated Mtmmmt=True
+
+DATAFILES c-imx-003.cn4
+DATAFILES eos-vdv-davis.cn4
+
+##########################
+#                        #
+#   RUNTIME PARAMETERS   #
+#                        #
+##########################
+
+
+D sim_rhoCham_l Initial chamber density
+PARAMETER sim_rhoCham_l   REAL -1.0
+
+D sim_rhoCham_r Initial chamber density
+PARAMETER sim_rhoCham_r   REAL -1.0
+
+D sim_tempCham_l Initial chamber electron temperature
+PARAMETER sim_tempCham_l  REAL 290.11375
+
+D sim_tempCham_r Initial chamber electron temperature
+PARAMETER sim_tempCham_r  REAL 290.11375
+
+D sim_rhoMin min dens
+PARAMETER sim_rhoMin REAL -1.0
+
+D sim_rhoMax min dens
+PARAMETER sim_rhoMax REAL -1.0
+
+D sim_eosCham chamber EOS type
+PARAMETER sim_eosCham   STRING "eos_gam" ["eos_tab","eos_gam"]
