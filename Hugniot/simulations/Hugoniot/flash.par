@@ -1,0 +1,156 @@
+run_comment = "Test shock Hugoniot for Solids"
+log_file    = "solidhugoniot.log"
+basenm      = "solidhugoniot_"
+
+# This particular parfile is used as an example that is described in
+# detail in the users guide.
+
+##########################
+#                        #
+#     I/O PARAMETERS     #
+#                        #
+##########################
+
+### Checkpoint Options  ###
+checkpointFileIntervalTime = 1.e-8
+checkpointFileIntervalStep = 0
+
+### Plot Options ###
+plotFileNumber       = 0
+plotFileIntervalStep = 0
+plotFileIntervalTime = 0
+
+### Restart Options ###
+restart              = .false.
+checkpointFileNumber = 0
+
+
+#################################
+#                               #
+#     CONDUCTION PARAMETERS     #
+#                               #
+#################################
+useDiffuse      = .false.
+useConductivity = .false.
+diff_useEleCond = .false.
+diff_eleFlMode  = "fl_larsen"
+diff_eleFlCoef  = 0.06
+diff_thetaImplct = 1.0
+
+diff_eleXlBoundaryType = "outflow"
+diff_eleXrBoundaryType = "outflow"
+
+
+####################################
+#                                  #
+#     HEAT EXCHANGE PARAMETERS     #
+#                                  #
+####################################
+useHeatexchange = .true.
+
+
+##########################
+#                        #
+#     EOS PARAMETERS     #
+#                        #
+##########################
+eosModeInit      = "dens_temp_gather"
+eosMode          = "dens_ie_gather"
+smallt           = 1.0
+smallx           = 1.0e-99
+eos_useLogTables = .false.
+use_hybridOrder = .true.
+eos_maxNewton = 1000
+eos_tolerance = 1.e-5
+smlrho          =  1e-15 
+
+
+############################
+#                          #
+#     HYDRO PARAMETERS     #
+#                          #
+############################
+useHydro = .true.
+ 
+order            = 2        # Interpolation order (first/second/third/fifth order)
+slopeLimiter     = "minmod" # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
+LimitedSlopeBeta = 1.       # Slope parameter for the "limited" slope by Toro
+charLimiting     = .true.   # Characteristic limiting vs. Primitive limiting
+use_avisc        = .true.   # use artificial viscosity (originally for PPM)
+cvisc            = 0.1      # coefficient for artificial viscosity
+use_flattening   = .false.  # use flattening (dissipative) (originally for PPM)
+use_steepening   = .false.  # use contact steepening (originally for PPM)
+use_upwindTVD    = .false.  # use upwind biased TVD slope for PPM (need nguard=6)
+RiemannSolver    = "hllc"   # Roe, HLL, HLLC, LLF, Marquina, hybrid
+entropy          = .false.  # Entropy fix for the Roe solver
+shockDetect      = .true.   # Shock Detect for numerical stability
+use_hybridOrder  = .true.   # Enforce Riemann density jump
+
+# Hydro boundary conditions:
+xl_boundary_type = "outflow"
+xr_boundary_type = "outflow"
+
+# EOSPAC options
+
+#eospac_pt_smoothing = .false.
+#eospac_smooth = .true.
+#eospac_create_tzero = .true.
+
+
+##############################
+#                            #
+#     INITIAL CONDITIONS     #
+#                            #
+##############################
+
+
+#sim_rhoCham_l  = 0.5
+#sim_tempCham_l = 1000
+#sim_rhoCham_r  = 1.0
+#sim_tempCham_r = 2000
+
+#ms_chamA = 12.0
+#ms_chamZ = 6.0
+ms_chamZMin = 0.01
+eos_chamEosType = "eos_gam"
+#eos_chamEosType = "eos_tab"
+#eos_chamSubType = "ionmix4"
+#eos_chamTableFile = "eos-vdv-davis.cn4"
+
+
+###########################
+#                         #
+#     TIME PARAMETERS     #
+#                         #
+###########################
+tstep_change_factor = 1.10
+cfl            = 0.5
+dt_diff_factor = 1.0e+100 # Disable diffusion dt
+rt_dtFactor    = 0.02
+hx_dtFactor    = 1.0e+100
+tmax           = 1.0e-09
+dtmin          = 1.0e-16
+dtinit         = 5.0e-16
+dtmax          = 1.0e-8
+nend           = 10000000
+
+
+###########################
+#                         #
+#     MESH PARAMETERS     #
+#                         #
+###########################
+geometry = "cartesian"
+
+# Domain size:
+xmin = 0.0
+xmax = 100e-4
+
+# Total number of blocks:
+nblockx = 1
+
+lrefine_max = 2
+lrefine_min = 2
+refine_var_1 = "dens"
+refine_var_2 = "tele"
+refine_var_3 = "pres"
