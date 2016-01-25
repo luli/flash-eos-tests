@@ -57,7 +57,7 @@ def setup_eos():
                 np.testing.assert_allclose(eos_tests[key][stateid]['G'], tab.q['G3_vdw'](crho, ctemp), rtol=2e-2,
                         err_msg=key+'_'+str(stateid))
             except:
-                print key+'_'+str(stateid), 'failed!'
+                print(key+'_'+str(stateid), 'failed!')
 
     test_data = eos_tests[test_case]
 

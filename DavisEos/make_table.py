@@ -31,7 +31,7 @@ D, T = np.meshgrid(rho, temp, indices='ij')
 pres = tab.Pt_DT(D,T)
 eint = tab.Ut_DT(D,T)
 
-print abar, zbar
+print(abar, zbar)
 
 
 numDens = opp.NA * rho / abar

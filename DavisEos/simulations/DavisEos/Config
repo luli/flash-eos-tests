@@ -24,7 +24,7 @@ ENDIF
 # flmake setup DavisEos -auto -1d +cartesian +pm4dev -nxb=16 +hdf5typeio species=cham +mtmmmt +uhd3t
 # flmake setup DavisEos -auto -1d +cartesian +pm4dev -nxb=16 +hdf5typeio species=cham +uhd3t -parfile=flash.par -unit=physics/Eos/EosMain/multiTemp/Eospac -unit=physics/Eos/EosMain/Tabulated Mtmmmt=True
 
-DATAFILES c-imx-003.cn4
+#DATAFILES c-imx-003.cn4
 DATAFILES eos-vdv-davis.cn4
 
 ##########################
