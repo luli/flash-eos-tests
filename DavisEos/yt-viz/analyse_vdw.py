@@ -1,26 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
-sys.path.append('./')
-sys.path.append('../../../../')
 import numpy as np
-from figure_size import update_mpl_rc, get_figsize
-update_mpl_rc({'backend': 'Agg'})
-#update_mpl_rc({'backend': 'pgf'})
 import matplotlib as mpl
-#print mpl.rcParams
-#mpl.use('Agg')
-pgf_with_pdflatex = {
-    "pgf.texsystem": "pdflatex",
-    "pgf.preamble": [
-         r"\usepackage[utf8x]{inputenc}",
-         r"\usepackage[T1]{fontenc}",
-         r"\usepackage{cmbright}",
-         r'\usepackage{tikz}',
-         r'\usepackage{pgfplots}'
-         ]
-}
-mpl.rcParams.update(pgf_with_pdflatex)
 
 from scipy.constants import N_A
 import matplotlib.pyplot as plt
@@ -37,7 +19,7 @@ def check_consist(tab, d):
     for key, attr in [('pion', 'Pt_DT'), ('eele', 'Ut_DT')]:
         md[key] = getattr(tab, attr)(rho, temp)
         pass_test = np.allclose(md[key], d[key])
-        print key, pass_test
+        print(key, pass_test)
         if not pass_test:
             print np.abs((md[key] - d[key]))/d[key]
 

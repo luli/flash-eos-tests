@@ -1,0 +1,18 @@
+
+Caso prova Argrow gas denso
+
+   np       niter    dt       dom_len
+  400      300      5.e-4    1.0
+   eos_type     Wgas        poly      gamma
+   2            0.018016    1         1.0125
+   p_cr         t_cr
+   21769825.79  638.95
+   inp_flag  (=1: p,t ; =2: p,rho)   inp_dim (=0 non-dimens.; =1 dimens.)
+   2                                 0
+   pl        dl       ul       pr         dr       ur
+   3.00      1.818    0.0      0.575      0.275    0
+   method     scheme     lb       rb       ivideo    int_rule
+   1          3          0        0        10        1    
+-------------------------- Dati di confronto
+   nexp    titexp
+   100     'SNAM_Tempo_1'
