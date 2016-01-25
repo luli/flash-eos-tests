@@ -1,0 +1,6 @@
+frun-*
+build/
+setup/
+*.log
+flash_desc.json
+*.pyc
